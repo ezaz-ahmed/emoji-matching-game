@@ -1,10 +1,45 @@
-<script>
+<script lang="ts">
+	import { createEventDispatcher } from 'svelte';
 	import Square from './Square.svelte';
+
+	export let grid: string[];
+
+	const dispatch = createEventDispatcher();
+
+	let a: number = -1;
+	let b: number = -1;
+
+	let resetTimeout: number;
 </script>
 
 <div class="grid">
-	{#each Array(16) as _}
-		<Square />
+	{#each grid as emoji, i}
+		<Square
+			selected={a === i || b === i}
+			{emoji}
+			on:click={() => {
+				clearTimeout(resetTimeout);
+
+				if (a === -1 && b === -1) {
+					a = i;
+				} else if (b === -1) {
+					b = i;
+
+					if (grid[a] === grid[b]) {
+						dispatch('found', {
+							emoji
+						});
+					} else {
+						resetTimeout = setTimeout(() => {
+							a = b = -1;
+						}, 1000);
+					}
+				} else {
+					b = -1;
+					a = i;
+				}
+			}}
+		/>
 	{/each}
 </div>
 

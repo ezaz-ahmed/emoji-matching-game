@@ -5,7 +5,7 @@ export interface Level {
 	emojis: string[];
 }
 
-export const levles: Level[] = [
+export const levels: Level[] = [
 	{
 		label: 'easy',
 		size: 4,
