@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Found from './Found.svelte';
 	import Grid from './Grid.svelte';
 	import { levels } from './levels';
 	import type { Level } from './levels';
@@ -41,7 +42,9 @@
 		/>
 	</div>
 
-	<div class="info" />
+	<div class="info">
+		<Found {found} />
+	</div>
 </div>
 
 <style>
