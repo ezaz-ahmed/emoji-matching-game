@@ -3,6 +3,7 @@
 	import Square from './Square.svelte';
 
 	export let grid: string[];
+	export let found: string[];
 
 	const dispatch = createEventDispatcher();
 
@@ -39,6 +40,7 @@
 					a = i;
 				}
 			}}
+			found={found.includes(emoji)}
 		/>
 	{/each}
 </div>
