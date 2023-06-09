@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { confetti } from '@neoconfetti/svelte';
+
 	import Game from './Game.svelte';
 	import '../style.css';
 	import Modal from './Modal.svelte';
@@ -13,6 +15,15 @@
 	bind:this={game}
 	on:play={() => {
 		state = 'playing';
+	}}
+	on:pause={() => {
+		state = 'paused';
+	}}
+	on:win={() => {
+		state = 'won';
+	}}
+	on:lose={() => {
+		state = 'lost';
 	}}
 />
 
@@ -44,6 +55,16 @@
 	</Modal>
 {/if}
 
+{#if state === 'won'}
+	<div
+		class="confetti"
+		use:confetti={{
+			stageWidth: innerWidth,
+			stageHeight: innerHeight
+		}}
+	/>
+{/if}
+
 <style>
 	h1 {
 		font-size: 3em;
@@ -55,5 +76,14 @@
 
 	p {
 		font-family: 'Grandstander';
+	}
+
+	.confetti {
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		left: 50%;
+		top: 30%;
+		pointer-events: none;
 	}
 </style>
