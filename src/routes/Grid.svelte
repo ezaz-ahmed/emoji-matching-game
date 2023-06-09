@@ -16,6 +16,7 @@
 <div class="grid">
 	{#each grid as emoji, i}
 		<Square
+			group={grid.indexOf(emoji) === i ? 'a' : 'b'}
 			selected={a === i || b === i}
 			{emoji}
 			on:click={() => {
@@ -52,5 +53,6 @@
 		grid-template-rows: repeat(4, 1fr);
 		grid-gap: 0.5em;
 		height: 100%;
+		perspective: 100vw;
 	}
 </style>
