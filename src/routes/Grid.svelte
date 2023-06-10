@@ -4,11 +4,10 @@
 
 	export let grid: string[];
 	export let found: string[];
-
-	const dispatch = createEventDispatcher();
-
 	let a: number = -1;
 	let b: number = -1;
+
+	const dispatch = createEventDispatcher();
 
 	let resetTimeout: number;
 </script>
