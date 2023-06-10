@@ -18,6 +18,7 @@
 <style>
 	.found {
 		display: flex;
+		flex-wrap: wrap;
 		justify-content: center;
 		align-items: center;
 		gap: 0.5em;
@@ -29,16 +30,14 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		width: 4em;
-		height: 4em;
-		background: white;
-		padding: 1em;
-		border-radius: 50%;
+		padding: 4em;
+		width: 6em;
+		height: 6em;
 	}
 
 	img {
 		position: absolute;
-		width: 2em;
-		height: 2em;
+		width: 6m;
+		height: 6em;
 	}
 </style>

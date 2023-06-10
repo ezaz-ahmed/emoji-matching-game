@@ -1,9 +1,8 @@
 <script lang="ts">
-	import { createEventDispatcher, onMount } from 'svelte';
+	import { createEventDispatcher } from 'svelte';
 	import Countdown from './Countdown.svelte';
 	import Found from './Found.svelte';
 	import Grid from './Grid.svelte';
-	import { levels } from './levels';
 	import type { Level } from './levels';
 	import { shuffle } from './utils';
 
@@ -24,7 +23,7 @@
 		resume();
 	}
 
-	function resume() {
+	export function resume() {
 		playing = true;
 		countdown();
 
@@ -60,6 +59,7 @@
 
 			if (remaining <= 0) {
 				dispatch('lose');
+				found = [];
 				playing = false;
 			}
 		}
@@ -90,6 +90,8 @@
 
 				if (found.length === (size * size) / 2) {
 					dispatch('win');
+					found = [];
+					playing = false;
 				}
 			}}
 			{found}

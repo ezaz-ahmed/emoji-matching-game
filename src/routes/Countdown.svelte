@@ -37,6 +37,7 @@
 		height: 1em;
 		background: transparent;
 		border: none;
+		cursor: pointer;
 	}
 
 	svg {
